@@ -119,7 +119,6 @@ function ProjectContent() {
     React.useEffect(() => {
         axios.get(`${global.api_url}/projects/`)
         .then((res) => {
-            console.log(res);
             setData(res.data);
         })
         .catch((err) => {

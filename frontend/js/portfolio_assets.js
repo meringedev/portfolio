@@ -52,7 +52,6 @@ export default function App() {
 
     const setInView = (inView, entry) => {
         if (inView) {
-            console.log(entry);
             setVisibleSection(entry.target.getAttribute('id'));
         }
     }
