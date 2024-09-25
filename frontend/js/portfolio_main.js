@@ -1,6 +1,10 @@
+import * as React from 'react';
 import {createRoot} from 'react-dom/client';
-import {Main} from './portfolio_sections';
+import App from './portfolio_assets.js';
 
 const domNode = document.getElementById('main');
 const root = createRoot(domNode);
-root.render(<Main />);
+root.render(
+<React.StrictMode>
+    <App />
+</React.StrictMode>);

@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  db:
+    build:
+      context: ./db
+      dockerfile: ./docker/db.Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./db/data:/var/lib/mysql
+
+  api:
+    build:
+      context: ./api
+      dockerfile: ./docker/api.Dockerfile
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:9000
+    volumes:
+      - ./api:/code
+    ports:
+      - 9000:9000
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./docker/frontend.Dockerfile
+    restart: unless-stopped
+    command: node ./opt/node_app/server.js
+    volumes:
+      - ./frontend:/opt/node_app
+    ports:
+      - 9010:9010

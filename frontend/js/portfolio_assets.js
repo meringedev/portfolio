@@ -1,159 +1,130 @@
-import {useState, useRef, useEffect} from 'react';
+import * as React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faArrowRightLong, faBars} from '@fortawesome/free-solid-svg-icons';
+import { useInView, InView } from 'react-intersection-observer';
+import get_prop from './functs.js';
+import sectionContentObject from './portfolio_sections.js';
 
-function showNav(isIntersecting, contentId, mainContentId, contentNavList) {
-    const [isVisible, setIsVisible] = useState(false);
-    const [isActiveId, setActiveId] = useState();
+const sections = ['about', 'experience', 'projects'];
 
-    if (isIntersecting && contentId !== mainContentId) {
-        setIsVisible(!isVisible);
-        setActiveId(contentId);
+function NavComponent({visibleSection, section}) {
+    return (
+        <>
+            <div className='sideNavLink'>
+                <a href={`#${section}`} className={`defaultLinkOverride ${visibleSection === section ? 'active': null}`}>
+                    <FontAwesomeIcon icon={faArrowRightLong} className='sideNavIcon'></FontAwesomeIcon>{section}
+                </a>
+            </div>
+        </>
+    )
+}
+
+function ContentRender({section, visibleSection, parentRef}) {
+    const sectionContent = get_prop(sectionContentObject, section);
+    return (
+        <>
+            <div id={section} ref={parentRef} className='sectionContainer'>
+                {sectionContent}
+            </div>
+        </>
+    )
+}
+
+export default function App() {
+    // const {ref, inView} = useInView({
+    //     threshold: 0,
+    // });
+
+    // const cont = React.useRef(null);
+
+    // const {ref, inView} = useInView({
+    //     threshold: 0.2
+    // });
+
+    const cont = React.useRef();
+    const ref = React.useRef();
+    const inView = useInView({
+        threshold: 0.2,
+        root: cont
+    });
+
+    const [visibleSection, setVisibleSection] = React.useState();
+
+    const setInView = (inView, entry) => {
+        if (inView) {
+            console.log(entry);
+            setVisibleSection(entry.target.getAttribute('id'));
+        }
+    }
+
+    const [isMobNavOpen, setIsMobNavOpen] = React.useState(false);
+
+    const toggleMobNav = () => {
+        setIsMobNavOpen(!isMobNavOpen);
     }
 
     return (
-        contentNavList.map((contentNav) => {
-            <li className={`${contentNav.contentId === isActiveId ? 'active': null} ${contentNav.contentClasses}`} href={`#${contentNav.contentHrefId}`}><FontAwesomeIcon icon={faArrowRightLong} />{contentNav.contentInner}</li>
-        })
-    );
-}
-
-function scrollCont(contentArray, mainContentId, contentNavList) {
-    const [isIntersecting, setIsIntersecting] = useState(false);
-    const ref = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsIntersecting(entry.isIntersecting);
-            },
-            {rootMargin: '-300px'}
-        );
-        observer.observe(ref.current);
-        return () => observer.disconnect();
-    }, [isIntersecting]);
-
-    useEffect(() => {
-        if (isIntersecting) {
-            ref.current.querySelectorAll('div').forEach((element) => {
-                element.classList.add('slide-in');
-            })
-        } else {
-            ref.current.querySelectorAll('div').forEach((element) => {
-                element.classList.remove('slide-in');
-            })
-        }
-    }, [isIntersecting]);
-
-    const showNav = showNav(isIntersecting, contentArray.contentId, mainContentId, contentNavList)
-
-    return (
         <>
-            <nav>
-                <h4>Alexander Zagrebina</h4>
-                <p>Backend Developer</p>
-                {showNav.map((nav) => {
-                    return nav
-                })}
-            </nav>
-            <div className={contentArray.contentClasses} ref={ref} id={contentArray.contentId}>
-                {contentArray.contentInner}
+            <div id='global'>
+                <div className='mainCont' id='home'>
+                    <h1>Welcome <span id='h1Br1'></span>to <span id='h1Br2'></span>my <span id='h1Br3'></span>portfolio.</h1>
+                    <h2 className='homeSubtitle1'>My Name's Alex.</h2>
+                    <h2 className='homeSubtitle2'>I'm a backend developer.</h2>
+                    <div className='homeNavCont'>
+                        <div className='homeNavLink'>
+                            <a href={`#about`} className='defaultLinkOverride'>
+                                <FontAwesomeIcon icon={faArrowRightLong} className='homeNavIcon'></FontAwesomeIcon>about
+                            </a>
+                        </div>
+                        <div className='homeNavLink'>
+                            <a href={`#experience`} className='defaultLinkOverride'>
+                                <FontAwesomeIcon icon={faArrowRightLong} className='homeNavIcon'></FontAwesomeIcon>experience
+                            </a>
+                        </div>
+                        <div className='homeNavLink'>
+                            <a href={`#projects`} className='defaultLinkOverride'>
+                                <FontAwesomeIcon icon={faArrowRightLong} className='homeNavIcon'></FontAwesomeIcon>projects
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className='nonMainCont' ref={cont}>
+                    <div className='sideNav'>
+                        <div className='sideNavSubtitleCont'>
+                            <p className='sideNavSubtitle1'>Alexander Zagrebin</p>
+                            <p className='sideNavSubtitle2'>Backend Developer</p>
+                        </div>
+                        <div className='mobNavCont'>
+                            <div className='mobNavToggle' onClick={toggleMobNav}>
+                                <FontAwesomeIcon icon={faBars} className='mobNavIcon'></FontAwesomeIcon>
+                            </div>
+                        </div>
+                        <div className={`sideNavCont ${isMobNavOpen ? 'show': 'hidden'}`}>
+                            <div className='sideNavLink'>
+                                <a href={`#home`} className='defaultLinkOverride'>
+                                    <FontAwesomeIcon icon={faArrowRightLong} className='sideNavIcon'></FontAwesomeIcon>home
+                                </a>
+                            </div>
+                            {sections.map((section) => (
+                                <NavComponent visibleSection={visibleSection} section={section} key={`${section}_1`}></NavComponent>
+                            ))}
+                        </div>
+                    </div>
+                    <div id='sectionWrapper'>
+                        {sections.map((section) => (
+                            <InView onChange={setInView} threshold={0.2} key={section}>
+                                {({ref}) => {
+                                    return (
+                                        <>
+                                            <ContentRender section={section} parentRef={ref}></ContentRender>
+                                        </>
+                                    )
+                                }}
+                            </InView>
+                        ))}
+                    </div>
+                </div>
             </div>
         </>
     )
 }
-
-function App(mainContent, contentArray, contentNavList) {
-    return (
-        <>
-            <div className={mainContent.contentClasses} id={mainContent.contentId}>
-                {mainContent.contentInner}
-            </div>
-            {contentArray.map((content) => {
-                return scrollCont(content, mainContent.contentId, contentNavList)
-            })}
-        </>
-    )
-}
-
-export default App;
-
-// function isIntersecting() {
-//     const [isIntersecting, setIsIntersecting] = useState(false);
-//     const ref = useRef(null);
-
-//     useEffect(() => {
-//         const observer = new IntersectionObserver(
-//             ([entry]) => {
-//                 setIsIntersecting(entry.isIntersecting);
-//             },
-//             {rootMargin: '-300px'}
-//         );
-//         observer.observe(ref.current);
-//         return () => observer.disconnect();
-//     }, [isIntersecting]);
-
-//     return [ref, isIntersecting]
-// }
-
-// function setActive(currentContentId) {
-//     const [isActiveId, setActiveId] = useState();
-//     setActiveId(currentContentId);
-    
-//     return isActiveId
-// }
-
-// function App(mainContent, contentArray) {
-//     const mainInnerContent = mainContent[0];
-//     const mainContentClasses = mainContent[1];
-//     const mainContentId = mainContent[2];
-//     let contentList = [];
-//     contentArray.forEach((content) => {
-//         content.forEach((innerContent, contentClasses, contentId) => {
-//             contentList.push(ScrollCont(innerContent, contentClasses, contentId));
-//         })
-//     });
-//     return (
-//         <div className='container'>
-//             <div className={mainContentClasses} id={mainContentId}>
-//                 {mainInnerContent}
-//             </div>
-//             {contentList.map(function(content) {
-//                 return content
-//             })}
-//         </div>
-//     )
-// }
-
-// function ScrollCont(innerContent, contentClasses, contentId) {
-//     const [isIntersecting, setIsIntersecting] = useState(false);
-//     const ref = useRef(null);
-
-//     useEffect(() => {
-//         const observer = new IntersectionObserver(
-//             ([entry]) => {
-//                 setIsIntersecting(entry.isIntersecting);
-//             },
-//             {rootMargin: '-300px'}
-//         );
-//         observer.observe(ref.current);
-//         return () => observer.disconnect();
-//     }, [isIntersecting]);
-
-//     useEffect(() => {
-//         if (isIntersecting) {
-//             ref.current.querySelectorAll('div').forEach((el) => {
-//                 el.classList.add('slide-in');
-//             });
-//         } else {
-//             ref.current.querySelectorAll('div').forEach((el) => {
-//                 el.classList.remove('slide-in');
-//             });
-//         }
-//     }, [isIntersecting]);
-
-//     return (
-//         <div ref={ref} className={contentClasses} id={contentId} key={contentId}>
-//             {innerContent}
-//         </div>
-//     );
-// }

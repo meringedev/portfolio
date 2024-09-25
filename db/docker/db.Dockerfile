@@ -1,0 +1,9 @@
+FROM mysql
+
+RUN chown -R mysql:root /var/lib/mysql
+
+ENV MYSQL_DATABASE=main
+ENV MYSQL_USER=admin
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_PASSWORD=root
+ENV MYSQL_PORT=3306

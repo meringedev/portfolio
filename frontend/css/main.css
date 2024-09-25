@@ -1,0 +1,873 @@
+@font-face {
+    font-family: Inter;
+    src: url('/public/inter-variable.ttf');
+}
+
+@font-face {
+    font-family: Inter-Italic;
+    src: url('/public/inter-variable-italic.ttf');
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+#global {
+    font-family: Inter;
+    height: 86vh;
+    width: 93vw;
+    overflow-y: scroll;
+    border: 5px solid white;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 55px;
+}
+
+div, p, h1, h2, h3, h4, h5  {
+    display: block;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+#global::-webkit-scrollbar {
+    display: none;
+}
+
+.defaultLinkOverride {
+    text-decoration: none;
+    color: white;
+}
+
+.defaultLinkOverride.active {
+    font-weight: 700;
+}
+
+.defaultLinkOverride:hover {
+    font-family: Inter;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 96px;
+    margin-block-start: 30px;
+    margin-block-end: 50px;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+.mainCont {
+    z-index: 7;
+    height: 100vh;
+    width: 100%;
+    padding: 80px;
+}
+
+.homeSubtitle1 {
+    font-weight: 500;
+    margin-block-end: 10px;
+}
+
+.homeSubtitle2 {
+    font-weight: 300;
+    margin-block-start: 10px;
+    margin-block-end: 50px;
+}
+
+.homeNavCont {
+    font-family: Inter-Italic;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.homeNavLink {
+    margin-top: 10px;
+}
+
+.homeNavIcon {
+    margin-right: 20px;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 64px;
+    margin-block-end: 30px;
+    text-transform: capitalize;
+}
+
+h4 {
+    font-family: Inter-Italic;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#sectionWrapper {
+    padding-right: 80px;
+}
+
+.sectionContainer {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding-top: 80px;
+}
+
+.sideNav {
+    position: sticky;
+    z-index: 6;
+    width: 40%;
+    height: 100%;
+    min-height: 200px;
+    flex-direction: column;
+    overflow: auto;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0%;
+    padding-left: 80px;
+    padding-top: 80px;
+}
+
+.sideNavLink {
+    margin-top: 10px;
+}
+
+.sideNavIcon {
+    margin-right: 20px;
+}
+
+.nonMainCont {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sideNavSubtitle1 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-block-end: 10px;
+}
+
+.sideNavSubtitle2 {
+    font-family: Inter-Italic;
+    font-weight: 500;
+    font-size: 20px;
+    margin-block-end: 20px;
+}
+
+.sideNavCont {
+    font-family: Inter-Italic;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.mobNavCont, .mobNavToggle {
+    display: none;
+}
+
+ul {
+    list-style: none;
+    font-weight: 200;
+    font-size: 20px;
+    margin-block-start: 20px;
+    margin-block-end: 30px;
+}
+
+.defaultListIcon {
+    width: 20px;
+    padding-right: 10px;
+}
+
+.defaultListTitle {
+    font-family: Inter-Italic;
+    font-weight: 500;
+}
+
+.defaultPara {
+    font-weight: 200;
+    margin-block-end: 20px;
+}
+
+p {
+    font-size: 20px;
+}
+
+.altPara {
+    margin-block-end: 30px;
+}
+
+h4.default {
+    margin-block-end: 15px;
+}
+
+.expHeader {
+    margin-block-end: 10px;
+}
+
+.caretIcon {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#experience {
+    margin-bottom: 150px;
+}
+
+.projectItem {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.projectMainCont {
+    width: 80%;
+}
+
+.projectBtnCont {
+    margin-left: auto;
+}
+
+.projectBtn {
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-family: Inter-Italic;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.projectBtn:hover {
+    background-color: black;
+    color: white;
+    font-family: Inter-Italic;
+}
+
+@media (min-width: 1178px) and (max-width: 1436px) {
+    #h1Br3::before {
+        content: "\A";
+        white-space: pre;
+    }
+
+    #sectionWrapper {
+        padding-left: 60px;
+    }
+
+    .projectMainCont {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1177px) {
+    #h1Br3::before {
+        content: "\A";
+        white-space: pre;
+    }
+
+    .mainCont, .sideNav {
+        padding-left: 60px;
+    }
+
+    #sectionWrapper {
+        padding-left: 40px;
+        padding-right: 60px;
+    }
+
+    .projectMainCont {
+        width: 60%;
+    }
+}
+
+@media (min-width: 861px) and (max-width: 1025px) {
+    .mainCont {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .sideNav {
+        background-color: black;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height: 100px;
+        padding-top: 0px;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0px;
+    }
+
+    .sideNavCont {
+        display: flex;
+        flex-direction: row;
+        margin-left: 10px;
+        gap: 20px;
+        align-items: center;
+        padding-right: 50px;
+    }
+
+    .sideNavSubtitleCont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: auto;
+        padding-left: 50px;
+    }
+
+    .sideNavSubtitle1, .sideNavSubtitle2 {
+        margin-block-end: 0px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .sideNavLink {
+        margin-top: 0px;
+    }
+
+    .sideNavIcon {
+        display: none;
+    }
+
+    .nonMainCont {
+        display: block;
+    }
+
+    #sectionWrapper {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .projectMainCont {
+        width: 70%;
+    }
+}
+
+@media (min-width: 726px) and (max-width: 860px) {
+    #h1Br2::before {
+        content: "\A";
+        white-space: pre;
+    }
+
+    .mainCont {
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 80vw;
+    }
+
+    .sideNav {
+        background-color: black;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height: 100px;
+        padding-top: 0px;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0px;
+    }
+
+    .sideNavCont {
+        display: flex;
+        flex-direction: row;
+        margin-left: 10px;
+        gap: 20px;
+        align-items: center;
+        padding-right: 50px;
+    }
+
+    .sideNavSubtitleCont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: auto;
+        padding-left: 50px;
+    }
+
+    .sideNavSubtitle1, .sideNavSubtitle2 {
+        margin-block-end: 0px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .sideNavLink {
+        margin-top: 0px;
+    }
+
+    .sideNavIcon {
+        display: none;
+    }
+
+    .nonMainCont {
+        display: block;
+    }
+
+    #sectionWrapper {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .sectionContainer {
+        height: 130%;
+    }
+
+    .projectMainCont {
+        width: 65%;
+    }
+
+    #projects {
+        margin-bottom: 300px;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 725px) {
+    .mainCont {
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 78vw;
+    }
+
+    .sideNav {
+        background-color: black;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height: 100px;
+        padding-top: 0px;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0px;
+    }
+
+    .sideNavCont {
+        display: flex;
+        flex-direction: row;
+        margin-left: 10px;
+        gap: 20px;
+        align-items: center;
+        padding-right: 50px;
+    }
+
+    .sideNavSubtitleCont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: auto;
+        padding-left: 50px;
+    }
+
+    .sideNavSubtitle1, .sideNavSubtitle2 {
+        margin-block-end: 0px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .sideNavLink {
+        margin-top: 0px;
+    }
+
+    .sideNavIcon {
+        display: none;
+    }
+
+    .nonMainCont {
+        display: block;
+    }
+
+    #sectionWrapper {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .sectionContainer {
+        height: 130%;
+    }
+
+    .projectMainCont {
+        width: 65%;
+    }
+
+    #projects {
+        margin-bottom: 300px;
+    }
+}
+
+@media (min-width: 571px) and (max-width: 700px) {
+    .mainCont {
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 78vw;
+    }
+
+    .sideNav {
+        background-color: black;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height: 100px;
+        padding-top: 0px;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0px;
+    }
+
+    .sideNavCont {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        padding-right: 0px;
+        margin-right: auto;
+        padding-left: 50px;
+    }
+
+    .sideNavSubtitleCont {
+        display: none;
+    }
+
+    .sideNavLink {
+        margin-top: 0px;
+    }
+
+    .sideNavIcon {
+        display: none;
+    }
+
+    .nonMainCont {
+        display: block;
+    }
+
+    #sectionWrapper {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .sectionContainer {
+        height: 130%;
+    }
+
+    .projectMainCont {
+        width: 100%;
+    }
+
+    .projectItem {
+        flex-direction: column;
+    }
+
+    .projectBtnCont {
+        margin-left: 0px;
+        margin-bottom: 10px;
+    }
+
+    #projects {
+        margin-bottom: 300px;
+    }
+}
+
+@media (min-width: 461px) and (max-width: 570px) {
+    h1 {
+        font-size: 82px;
+    }
+
+    .mainCont {
+        padding-left: 30px;
+        padding-right: 30px;
+        width: 78vw;
+    }
+
+    .sideNav {
+        background-color: black;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height: 100px;
+        padding-top: 0px;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0px;
+    }
+
+    .sideNavCont {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        padding-right: 0px;
+        margin-right: auto;
+        padding-left: 30px;
+    }
+
+    .sideNavSubtitleCont {
+        display: none;
+    }
+
+    .sideNavLink {
+        margin-top: 0px;
+    }
+
+    .sideNavIcon {
+        display: none;
+    }
+
+    .nonMainCont {
+        display: block;
+    }
+
+    #sectionWrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .sectionContainer {
+        height: 130%;
+    }
+
+    .projectMainCont {
+        width: 100%;
+    }
+
+    .projectItem {
+        flex-direction: column;
+    }
+
+    .projectBtnCont {
+        margin-left: 0px;
+        margin-bottom: 10px;
+    }
+
+    #projects {
+        margin-bottom: 300px;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 460px) {
+    h1 {
+        font-size: 70px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 50px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    ul, p {
+        font-size: 16px;
+    }
+
+    .homeNavCont {
+        font-size: 16px;
+    }
+
+    .mainCont {
+        padding-left: 30px;
+        padding-right: 30px;
+        width: 78vw;
+    }
+
+    .sideNav {
+        background-color: black;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height: 100px;
+        padding-top: 0px;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0px;
+    }
+
+    .sideNavCont {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        padding-right: 0px;
+        margin-right: auto;
+        padding-left: 30px;
+    }
+
+    .sideNavSubtitleCont {
+        display: none;
+    }
+
+    .sideNavLink {
+        margin-top: 0px;
+    }
+
+    .sideNavIcon {
+        display: none;
+    }
+
+    .nonMainCont {
+        display: block;
+    }
+
+    #sectionWrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .sectionContainer {
+        height: 130%;
+    }
+
+    .projectMainCont {
+        width: 100%;
+    }
+
+    .projectItem {
+        flex-direction: column;
+    }
+
+    .projectBtnCont {
+        margin-left: 0px;
+        margin-bottom: 10px;
+    }
+
+    .projectBtn {
+        font-size: 16px;
+    }
+
+    #projects {
+        margin-bottom: 300px;
+    }
+}
+
+@media (max-width: 399px) {
+    h1 {
+        font-size: 55px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    h3 {
+        font-size: 45px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    ul, p {
+        font-size: 16px;
+    }
+
+    .homeNavCont {
+        font-size: 16px;
+    }
+
+    .mainCont {
+        padding-left: 30px;
+        padding-right: 30px;
+        width: 78vw;
+    }
+
+    .mobNavCont, .mobNavToggle {
+        display: block;
+    }
+
+    .mobNavCont {
+        width: 100%;
+    }
+
+    .mobNavToggle {
+        margin-top: 10px;
+        margin-bottom: 8px;
+        margin-left: 30px;
+    }
+
+    .mobNavIcon {
+        font-size: 20px;
+    }
+
+    .sideNav {
+        background-color: black;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 20px;
+        padding-top: 0px;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 0px;
+    }
+
+    .sideNavCont.show {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        padding-right: 0px;
+        margin-right: auto;
+        padding-left: 30px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .sideNavCont.hidden {
+        display: None;
+    }
+
+    .sideNavSubtitleCont {
+        display: none;
+    }
+
+    .sideNavLink {
+        margin-top: 0px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .nonMainCont {
+        display: block;
+    }
+
+    #sectionWrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .sectionContainer {
+        height: 130%;
+    }
+
+    .projectMainCont {
+        width: 100%;
+    }
+
+    .projectItem {
+        flex-direction: column;
+    }
+
+    .projectBtnCont {
+        margin-left: 0px;
+        margin-bottom: 10px;
+    }
+
+    .projectBtn {
+        font-size: 16px;
+    }
+
+    #projects {
+        margin-bottom: 300px;
+    }
+}
