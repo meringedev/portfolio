@@ -7,8 +7,14 @@ services:
       context: ./db
       dockerfile: ./docker/db.Dockerfile
     restart: unless-stopped
+    args:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
     volumes:
-      - ./db/data:/var/lib/mysql
+      - ./mysql_dump:/docker-entrypoint-initdb.d
 
   api:
     build:

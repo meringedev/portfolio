@@ -9,5 +9,6 @@ RUN yarn install --force
 ENV PATH /opt/node_app/node_modules/.bin$PATH
 
 COPY . /opt/node_app
+WORKDIR /opt/node_app
 
 EXPOSE 9010
