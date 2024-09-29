@@ -6,13 +6,13 @@ services:
     build:
       context: ./db
       dockerfile: ./docker/db.Dockerfile
+      args:
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_PORT: ${MYSQL_PORT}
     restart: unless-stopped
-    args:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_PORT: ${MYSQL_PORT}
     volumes:
       - ./mysql_dump:/docker-entrypoint-initdb.d
 
@@ -34,7 +34,7 @@ services:
       context: ./frontend
       dockerfile: ./docker/frontend.Dockerfile
     restart: unless-stopped
-    command: node ./opt/node_app/server.js
+    command: node server.js
     volumes:
       - ./frontend:/opt/node_app
     ports:

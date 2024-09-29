@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'localhost:9000', 'host.docker.internal', 'host.docker.internal:9000', 'meringedev.site', 'meringedev.api.site', '0.0.0.0', '0.0.0.0:9000']
+ALLOWED_HOSTS = ['localhost', 'localhost:9000', 'host.docker.internal', 'host.docker.internal:9000', 'meringedev.site', 'api.meringedev.site', '0.0.0.0', '0.0.0.0:9000']
 
 # Application definition
 
@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:9010', 'http://host.docker.internal:9010', 'http://meringedev.site',
+    'http://localhost:9010', 'http://host.docker.internal:9010', 'https://meringedev.site', 'https://www.meringedev.site', 'http://meringedev.site', 'http://www.meringedev.site'
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True

@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
-const whitelist = ['http://localhost:9000', 'http://host.docker.internal:9000'];
+const whitelist = ['http://localhost:9000', 'http://host.docker.internal:9000', 'http://www.api.meringedev.site', 'http://api.meringedev.site', 'https://www.api.meringedev.site', 'https://api.meringedev.site'];
 
 const allowed_headers = ['Content-Type', 'Accept', 'Authorization', 'ngrok-skip-browser-warning', 'Set-Cookie'];
 

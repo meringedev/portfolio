@@ -1,5 +1,5 @@
 const global = {
-    api_url: 'https://meringedev.api.site'
+    api_url: 'https://api.meringedev.site'
 }
 
 export {global}

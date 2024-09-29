@@ -21,9 +21,10 @@ body {
     border: 5px solid white;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 55px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 div, p, h1, h2, h3, h4, h5  {
@@ -212,7 +213,7 @@ h4.default {
 }
 
 #experience {
-    margin-bottom: 150px;
+    margin-bottom: 50vh;
 }
 
 .projectItem {
@@ -250,6 +251,10 @@ h4.default {
     background-color: black;
     color: white;
     font-family: Inter-Italic;
+}
+
+#projects {
+    margin-bottom: 50vh;
 }
 
 @media (min-width: 1178px) and (max-width: 1436px) {
@@ -747,6 +752,12 @@ h4.default {
 
     #projects {
         margin-bottom: 300px;
+    }
+}
+
+@media (max-height: 500px) {
+    .mainCont {
+        height: 600px;
     }
 }
 
